@@ -8,7 +8,7 @@ try {
 
     $reps = (int) $_POST["reps"];
     $uploaded_file = $_FILES["upload-img"];
-    $target_file = $DIR.new_filename($reps);
+    $target_file = $DIR_MEDIA.get_filename_new($reps);
     $error = false;
 
     if (getimagesize($uploaded_file["tmp_name"]) === false) {
@@ -29,7 +29,7 @@ try {
     }
 
 } catch(Exception $e) {
-    $_SESSION['message'] = $error;
+    $_SESSION['message'] = $e->getMessage();
 } finally {
     header("Location: index.php");
 }
