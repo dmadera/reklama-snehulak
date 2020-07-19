@@ -33,7 +33,7 @@
 .notactive.overlay {
     bottom: 0;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.45);
 }
 
 .notactive.overlay:not(:hover) .button-remove {

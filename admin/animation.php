@@ -17,8 +17,8 @@
 
 <body>
     <?php
-        require_once("func.php");
-        require_once("navbar.php");
+    require_once("func.php");
+    require_once("navbar.php");
     ?>
     <div class="container-fluid">
         <div class="p-2 animation text-center">
@@ -26,16 +26,19 @@
             <div class="d-flex mb-5 flex-wrap flex-row align-items-center">
                 <?php
                 $slots = get_complete_slots();
-                foreach($slots as $key => $slot){
-                    echo sprintf('<img src="../media/%s?time=%d" class="mr-1 mb-1 d-block thumbnail-animation" />', $slot, time());
-                    if(($key+1) % $SLOT_LIMIT === 0) {
+                foreach ($slots as $key => $slot) {
+                    if ($slot !== -1) {
+                        echo sprintf('<img src="../media/%s?time=%d" class="mr-1 mb-1 d-block thumbnail-animation" />', $slot, time());
+                    }
+                    if (($key + 1) % $SLOT_LIMIT === 0) {
                         echo '<div class="break"></div>';
-                    }     
+                    }
                 }
                 ?>
             </div>
-            </div>
         </div>
     </div>
+    </div>
 </body>
+
 </html>

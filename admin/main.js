@@ -37,7 +37,7 @@ $(function() {
         const reps = event.target.attributes['data-reps'].value;
         const position = event.target.attributes['data-position'].value;
         if (!check_drop(source, reps, this)) return;
-        $form = $('<form>', { "method": "POST", "action": "move-handle.php", "enctype": "multipart/form-data" });
+        $form = $('<form>', { "method": "POST", "action": "copy-handle.php", "enctype": "multipart/form-data" });
         $form.append($("<input>", { "type": "hidden", "name": "reps", "value": reps }));
         $form.append($("<input>", { "type": "hidden", "name": "position", "value": position }));
         $form.append($("<input>", { "type": "hidden", "name": "source", "value": source }));
