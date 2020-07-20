@@ -1,6 +1,8 @@
 <?php
 $DIR_MEDIA = realpath(dirname(__FILE__)) . "/../media/";
 $ANIMATION_FILE = $DIR_MEDIA . "animation.gif";
+$LOCK_FILE = $DIR_MEDIA . "lock";
+$SIZE_FILE = $DIR_MEDIA . "size-animation";
 $REPS = array(40, 20, 10, 0);
 $SLOT_LIMIT = 10;
 $SLOTS_COUNT = 40;

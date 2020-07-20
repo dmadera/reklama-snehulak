@@ -37,7 +37,7 @@ $(function() {
         const reps = event.target.attributes['data-reps'].value;
         const position = event.target.attributes['data-position'].value;
         if (!check_drop(source, reps, this)) return;
-        $form = $('<form>', { "method": "POST", "action": "copy-handle.php", "enctype": "multipart/form-data" });
+        $form = $('<form>', { "method": "POST", "action": "move-handle.php", "enctype": "multipart/form-data" });
         $form.append($("<input>", { "type": "hidden", "name": "reps", "value": reps }));
         $form.append($("<input>", { "type": "hidden", "name": "position", "value": position }));
         $form.append($("<input>", { "type": "hidden", "name": "source", "value": source }));
@@ -47,5 +47,17 @@ $(function() {
 
     $('.thumbnail img').on('dragstart', function(event) {
         event.originalEvent.dataTransfer.setData("source", event.target.attributes.alt.value);
+    });
+
+    $('.generate').on('click', function(event) {
+        // event.preventDefault();
+        var $overlay = $('body').find(".overlay-loader");
+        console.log($overlay);
+        if ($overlay.length == 0) {
+            $overlay = $('<div>', { "class": "overlay-loader", "style": "display: none;" });
+            $overlay.append($('<div>', { "class": "loader" }));
+            $('body').append($overlay);
+        }
+        $overlay.show();
     });
 });
