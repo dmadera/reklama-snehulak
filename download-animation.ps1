@@ -4,8 +4,7 @@ $logFile = "log-$(gc env:computername).log"
 $logLevel = "DEBUG" # ("DEBUG","INFO","WARN","ERROR","FATAL")
 $logSize = 3mb # 30kb
 $logCount = 1
-$destination = "$PSScriptRoot\animation.mp4"
-$destination1 = "$PSScriptRoot\animation1.mp4"
+$destination = "$PSScriptRoot\animation.gif"
 $last_moddate = "$PSScriptRoot\lastmoddate"
 
 ##################################################################
@@ -185,32 +184,18 @@ try {
 
 if(Test-Path $tmp_animation -PathType Leaf) {
     Write-Log "Animation file downloaded!" "INFO"
-    
     try {
         # trying to write to first file
         [IO.File]::OpenWrite($destination).close();
-        Gif-to-Mp4 $tmp_animation $destination
-        $input = $destination
-        $output = $destination1
+        Copy-Item $tmp_animation $destination
+        Write-Log "Animation file overwritten to $destination." "INFO"
+        exit 0
     } catch {
-        Write-Log "Unable to write mp4 file. $destination" "INFO"
-        try {
-            # trying to write to second file
-            [IO.File]::OpenWrite($destination1).close();
-            Gif-to-Mp4 $tmp_animation $destination1
-            $input = $destination1
-            $output = $destination
-        } catch {
-            # unable to write the second file
-            Write-Log "Unable to write mp4 file. $destination1" "ERROR"
-            exit 3
-        }
+        Write-Log "Unable to write gif file. $destination" "ERROR"
+        exit 1
     } finally {
-        Write-Log "Starting delayed copy from $input to $output" "INFO"
-        & "$PSScriptRoot\distribute-animation.ps1" $input $output
+        Remove-Item $tmp_animation
     }
-    # Remove-Item $tmp_animation
-    exit 0
 } else {
     Write-Log "Unable to download animation file. File doesn't exist." "ERROR"
     exit 2

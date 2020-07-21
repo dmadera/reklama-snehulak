@@ -2,13 +2,13 @@
 session_start();
 require_once("func.php");
 try {
-    if(empty($_POST["reps"]) || empty($_FILES["upload-img"])) {
+    if (empty($_POST["reps"]) || empty($_FILES["upload-img"])) {
         throw new Exception("Nebyla předána data.");
     }
 
     $reps = (int) $_POST["reps"];
     $uploaded_file = $_FILES["upload-img"];
-    $target_file = $DIR_MEDIA.get_filename_new($reps);
+    $target_file = $DIR_MEDIA . get_filename_new($reps);
     $error = false;
 
     if (getimagesize($uploaded_file["tmp_name"]) === false) {
@@ -27,11 +27,9 @@ try {
     if (!$result) {
         throw new Exception("Chyba nahrávání souboru.");
     }
-
-} catch(Exception $e) {
+    resize_file($target_file);
+} catch (Exception $e) {
     $_SESSION['message'] = $e->getMessage();
 } finally {
     header("Location: index.php");
 }
-
-?>

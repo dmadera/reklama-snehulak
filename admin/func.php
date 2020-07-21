@@ -167,7 +167,7 @@ function generate_animation($slots, $delay, $dest)
             $input_images_str = implode(" ", $input_images);
             $target = tempnam(sys_get_temp_dir(), 'animation') . ".gif";
             array_push($tmp_animations, $target);
-            $cmd = sprintf("convert -delay %d %s -loop 0 %s", $delay * 100, $input_images_str, $target);
+            $cmd = sprintf("convert -delay %d %s -loop 0 '%s'", $delay * 100, $input_images_str, $target);
             $result = shell_exec($cmd);
             $input_images = array();
             if (!empty($result)) throw new Exception($result);
@@ -175,7 +175,7 @@ function generate_animation($slots, $delay, $dest)
     }
 
     $input_images_str = implode(" ", $tmp_animations);
-    $cmd = sprintf("convert %s -loop 0 %s", $input_images_str, $dest);
+    $cmd = sprintf("convert %s -loop 0 '%s'", $input_images_str, $dest);
     $result = shell_exec($cmd);
     foreach ($tmp_animations as $tmpfile) {
         if (is_file($tmpfile))
@@ -272,4 +272,19 @@ function copy_filename($src_filename, $dest_reps, $dest_pos)
 {
     $dest_filename = make_space_between_files($dest_reps, $dest_pos);
     duplicate_filename($src_filename, $dest_filename);
+}
+
+function resize_file($file)
+{
+    global $WIDTH, $HEIGHT;
+
+    $cmd = sprintf("convert '%s' -resize %dx%d\! '%s'", $file, $WIDTH, $HEIGHT, $file . ".bak");
+    $result = shell_exec($cmd);
+    if (!file_exists($file . ".bak")) throw new Exception("File $file.bak doesn't exist.");
+
+    if (file_exists($file)) unlink($file);
+
+    rename($file . ".bak", $file);
+
+    if (!empty($result)) throw new Exception($result);
 }
