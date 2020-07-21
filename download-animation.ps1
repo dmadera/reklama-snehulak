@@ -4,7 +4,8 @@ $logFile = "log-$(gc env:computername).log"
 $logLevel = "DEBUG" # ("DEBUG","INFO","WARN","ERROR","FATAL")
 $logSize = 3mb # 30kb
 $logCount = 1
-$destination = "$PSScriptRoot\animation.gif"
+$destination = "$PSScriptRoot\animation.mp4"
+$destination1 = "$PSScriptRoot\animation1.mp4"
 $last_moddate = "$PSScriptRoot\lastmoddate"
 
 ##################################################################
@@ -138,6 +139,12 @@ $Null = @(
 # END LOGGER
 ##################################################################
 
+function Gif-to-Mp4 {
+    $input = $args[0]
+    $output = $args[1]
+    & "$PSScriptRoot\ffmpeg.exe" -i "$input" -f gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" "$output" -y
+}
+
 Write-Log "Started" "INFO"
 
 try {
@@ -156,12 +163,12 @@ if(Test-Path $output -PathType Leaf) {
 
 try {
     $url = "https://www.reklama-snehulak.cz/media/animation.gif"
-    $date_remote = get-date ((cmd.exe /c "curl -sI $url") | select-string -pattern 'Last-Modified: (.*)').Matches.groups[1].value
+    $date_remote = Get-Date ((cmd.exe /c "curl -sI $url") | select-string -pattern 'Last-Modified: (.*)').Matches.groups[1].value
     
     $tmp_animation = "$PSScriptRoot\animation-tmp.gif"
 
     if((Test-Path $destination -PathType Leaf) -AND (Test-Path $last_moddate -PathType Leaf)) {
-        $date_local = Get-Content -Path $last_moddate
+        $date_local = Get-Date (Get-Content -Path $last_moddate)
 
         if($date_remote -eq $date_local) {
             Write-Log "Files are the same modification date." "INFO"
@@ -178,8 +185,31 @@ try {
 
 if(Test-Path $tmp_animation -PathType Leaf) {
     Write-Log "Animation file downloaded!" "INFO"
-    Copy-Item $tmp_animation -Force -Destination $destination
-    Remove-Item $tmp_animation
+    
+    try {
+        # trying to write to first file
+        [IO.File]::OpenWrite($destination).close();
+        Gif-to-Mp4 $tmp_animation $destination
+        $input = $destination
+        $output = $destination1
+    } catch {
+        Write-Log "Unable to write mp4 file. $destination" "INFO"
+        try {
+            # trying to write to second file
+            [IO.File]::OpenWrite($destination1).close();
+            Gif-to-Mp4 $tmp_animation $destination1
+            $input = $destination1
+            $output = $destination
+        } catch {
+            # unable to write the second file
+            Write-Log "Unable to write mp4 file. $destination1" "ERROR"
+            exit 3
+        }
+    } finally {
+        Write-Log "Starting delayed copy from $input to $output" "INFO"
+        & "$PSScriptRoot\distribute-animation.ps1" $input $output
+    }
+    # Remove-Item $tmp_animation
     exit 0
 } else {
     Write-Log "Unable to download animation file. File doesn't exist." "ERROR"
