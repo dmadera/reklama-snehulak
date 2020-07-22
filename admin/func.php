@@ -265,12 +265,24 @@ function remove_filename($filename)
 function move_filename($src_filename, $dest_reps, $dest_pos)
 {
     $dest_filename = make_space_between_files($dest_reps, $dest_pos);
+    // check if make_space_between_files is changed source file
+    $src_index = get_filename_index($src_filename);
+    $src_reps = get_filename_reps($src_filename);
+    if ($src_reps == $dest_reps && $dest_pos < $src_index) {
+        $src_filename = get_filename($src_reps, $src_index + 1);
+    }
     rename_filename($src_filename, $dest_filename);
 }
 
 function copy_filename($src_filename, $dest_reps, $dest_pos)
 {
     $dest_filename = make_space_between_files($dest_reps, $dest_pos);
+    // check if make_space_between_files is changed source file
+    $src_index = get_filename_index($src_filename);
+    $src_reps = get_filename_reps($src_filename);
+    if ($src_reps == $dest_reps && $dest_pos < $src_index) {
+        $src_filename = get_filename($src_reps, $src_index + 1);
+    }
     duplicate_filename($src_filename, $dest_filename);
 }
 

@@ -1,7 +1,11 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if ($_SESSION["login"] !== true) {
+    header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
-
 <?php require_once("header.php"); ?>
 
 <body>
@@ -10,7 +14,7 @@
     require_once("navbar.php");
 
     if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
-        print("<script>alert('" . $_GET['error'] . "');</script>");
+        print("<script>alert('" . $_SESSION['message'] . "');</script>");
         unset($_SESSION['message']);
     }
     foreach ($REPS as $reps) {
@@ -43,7 +47,7 @@
                     </div>
                 </div>
                 <?php endforeach; ?>
-                <div class="drop mb-2" data-position="<?php echo $key; ?>" data-reps="<?php echo $reps; ?>"
+                <div class="drop mb-2" data-position="<?php echo ++$key; ?>" data-reps="<?php echo $reps; ?>"
                     droppable="<?php echo $free_slots >= $reps / 10 || $reps == 0 ? "true" : "false"; ?>"></div>
                 <?php if ($free_slots >= $reps / 10 || $reps == 0) : ?>
                 <div class="rounded thumbnail mb-2 mr-3 border">

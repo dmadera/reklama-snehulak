@@ -52,7 +52,7 @@ $(function() {
     $('.generate').on('click', function(event) {
         // event.preventDefault();
         var $overlay = $('body').find(".overlay-loader");
-        console.log($overlay);
+        // console.log($overlay);
         if ($overlay.length == 0) {
             $overlay = $('<div>', { "class": "overlay-loader", "style": "display: none;" });
             $overlay.append($('<div>', { "class": "loader" }));
