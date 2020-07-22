@@ -8,7 +8,7 @@ if ($_POST["login"] == "true") {
             throw new Exception("Neplatné uživatelské jméno.");
         }
 
-        $secret = file_get_contents("secret");
+        $secret = trim(file_get_contents("secret"));
         if ($password != $secret) {
             throw new Exception("Neplatné heslo.");
         }
