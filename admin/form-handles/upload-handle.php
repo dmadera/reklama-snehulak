@@ -1,8 +1,9 @@
 <?php
 session_start();
-require_once("func.php");
+require_once("../.config.php");
+require_once("../logic/func-files.php");
 try {
-    if (empty($_POST["reps"]) || empty($_FILES["upload-img"])) {
+    if (!isset($_POST["reps"]) || empty($_FILES["upload-img"])) {
         throw new Exception("Nebyla předána data.");
     }
 
@@ -12,14 +13,14 @@ try {
     $error = false;
 
     if (getimagesize($uploaded_file["tmp_name"]) === false) {
-        throw new Exception("Soubor není validní obrázek.");
+        throw new Exception("Soubor není validní JPG obrázek.");
     }
 
     if ($uploaded_file["size"] > 800000) {
         throw new Exception("Velikost souboru přesahuje 800kB.");
     }
 
-    if (strtolower(pathinfo($target_file, PATHINFO_EXTENSION)) != "jpg") {
+    if (strtolower(pathinfo($uploaded_file["name"], PATHINFO_EXTENSION)) != "jpg") {
         throw new Exception("Nahrávejte pouze JPG obrázky co nejmenší velikosti.");
     }
 
@@ -31,5 +32,5 @@ try {
 } catch (Exception $e) {
     $_SESSION['message'] = $e->getMessage();
 } finally {
-    header("Location: index.php");
+    header("Location: ../index.php");
 }

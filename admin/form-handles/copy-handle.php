@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("func.php");
+require_once("../logic/func-files.php");
 try {
     if (empty($_POST["source"]) || !isset($_POST["reps"]) || !isset($_POST["position"])) {
         throw new Exception("Nebyla předána data.");
@@ -14,5 +14,5 @@ try {
     $_SESSION['message'] = $e->getMessage();
     print($e->getMessage);
 } finally {
-    header("Location: index.php");
+    header("Location: ../index.php");
 }

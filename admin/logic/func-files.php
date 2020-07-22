@@ -1,15 +1,5 @@
 <?php
-$DIR_MEDIA = realpath(dirname(__FILE__)) . "/../media/";
-$ANIMATION_FILE = $DIR_MEDIA . "animation.gif";
-$LOCK_FILE = $DIR_MEDIA . "lock";
-$SIZE_FILE = $DIR_MEDIA . "size-animation";
-$REPS = array(40, 20, 10, 0);
-$SLOT_LIMIT = 10;
-$SLOTS_COUNT = 40;
-$SLOT_COUNT = $SLOTS_COUNT / $SLOT_LIMIT;
-$INTERVAL = 9;
-$WIDTH = 1120;
-$HEIGHT = 640;
+require_once(realpath(dirname(__FILE__)) . "/../.config.php");
 
 function get_files($reps)
 {
@@ -41,10 +31,10 @@ function get_filename($reps, $index)
 function get_filename_new($reps)
 {
     $files = get_files($reps);
-    if (count($files) == 0) {
-        return 0;
-    }
-    $last_num = get_filename_index(end($files));
+    if (count($files) == 0)
+        $last_num = -1;
+    else
+        $last_num = get_filename_index(end($files));
     return get_filename($reps, $last_num + 1);
 }
 
@@ -152,37 +142,6 @@ function get_output_slots(&$slots)
         }
     }
     return $out;
-}
-
-function generate_animation($slots, $delay, $dest)
-{
-    global $DIR_MEDIA, $SLOT_LIMIT, $SLOTS_COUNT;
-    $tmp_animations = array();
-    $input_images = array();
-    foreach ($slots as $key => $slot) {
-        if ($slot !== -1) {
-            array_push($input_images, $DIR_MEDIA . $slot);
-        }
-        if (($key + 1) % $SLOT_LIMIT === 0) {
-            $input_images_str = implode(" ", $input_images);
-            $target = tempnam(sys_get_temp_dir(), 'animation') . ".gif";
-            array_push($tmp_animations, $target);
-            $cmd = sprintf("convert -delay %d %s -loop 0 '%s'", $delay * 100, $input_images_str, $target);
-            $result = shell_exec($cmd);
-            $input_images = array();
-            if (!empty($result)) throw new Exception($result);
-        }
-    }
-
-    $input_images_str = implode(" ", $tmp_animations);
-    $cmd = sprintf("convert %s -loop 0 '%s'", $input_images_str, $dest);
-    $result = shell_exec($cmd);
-    foreach ($tmp_animations as $tmpfile) {
-        if (is_file($tmpfile))
-            unlink($tmpfile);
-    }
-
-    if (!empty($result)) throw new Exception($result);
 }
 
 function rename_files_by_array($reps, &$files)

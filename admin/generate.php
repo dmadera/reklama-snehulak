@@ -2,13 +2,14 @@
 <!DOCTYPE html>
 <html>
 
-<?php require_once("header.php"); ?>
+<?php require_once("layout/header.php"); ?>
 
 <body>
     <?php
-    require_once("func.php");
-    require_once("navbar.php");
-    require_once("lock.php");
+    require_once("logic/func-files.php");
+    require_once("logic/func-animation.php");
+    require_once("layout/navbar.php");
+    require_once("logic/class-filelocker.php");
     try {
         if (!FileLocker::lockFile($LOCK_FILE)) {
             throw new Exception("Nepodařilo se získat zámek.");

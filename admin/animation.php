@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
 
-<?php require_once("header.php"); ?>
+<?php require_once("layout/header.php"); ?>
 
 <body>
     <?php
-    require_once("func.php");
-    require_once("navbar.php");
+    require_once("logic/func-files.php");
+    require_once("layout/navbar.php");
     ?>
     <div class="container-fluid">
         <div class="p-2 animation text-center">

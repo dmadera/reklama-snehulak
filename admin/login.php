@@ -8,7 +8,8 @@ if ($_POST["login"] == "true") {
             throw new Exception("Neplatné uživatelské jméno.");
         }
 
-        if ($password != "zD9053XsjLZZ0T") {
+        $secret = file_get_contents("secret");
+        if ($password != $secret) {
             throw new Exception("Neplatné heslo.");
         }
         $_SESSION["login"] = true;
@@ -20,7 +21,7 @@ if ($_POST["login"] == "true") {
 ?>
 
 <html>
-<?php require_once("header.php"); ?>
+<?php require_once("layout/header.php"); ?>
 
 <body>
     <div class="mt-5 login-form text-center d-flex justify-content-center">

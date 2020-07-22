@@ -6,3 +6,4 @@ deploy
 README.md
 exclude
 .gitignore
+secret

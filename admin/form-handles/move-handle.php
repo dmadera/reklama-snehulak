@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once("func.php");
+require_once("../logic/func-files.php");
 try {
-    if(empty($_POST["source"]) || !isset($_POST["reps"]) || !isset($_POST["position"])) {
+    if (empty($_POST["source"]) || !isset($_POST["reps"]) || !isset($_POST["position"])) {
         throw new Exception("Nebyla předána data.");
     }
 
@@ -10,11 +10,9 @@ try {
     $position = (int) $_POST["position"];
     $source_filename = $_POST["source"];
     move_filename($source_filename, $reps, $position);
-
-} catch(Exception $e) {
+} catch (Exception $e) {
     $_SESSION['message'] = $e->getMessage();
     print($e->getMessage);
 } finally {
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
-?>

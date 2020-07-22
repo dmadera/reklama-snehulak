@@ -6,12 +6,13 @@ if ($_SESSION["login"] !== true) {
 ?>
 <!DOCTYPE html>
 <html>
-<?php require_once("header.php"); ?>
+<?php require_once("layout/header.php"); ?>
 
 <body>
     <?php
-    require_once("func.php");
-    require_once("navbar.php");
+    require_once(".config.php");
+    require_once("logic/func-files.php");
+    require_once("layout/navbar.php");
 
     if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
         print("<script>alert('" . $_SESSION['message'] . "');</script>");
@@ -40,7 +41,7 @@ if ($_SESSION["login"] !== true) {
                     <img src="<?php echo "../media/" . $filename . "?" . time(); ?>" alt="<?php echo $filename; ?>"
                         draggable="true">
                     <div class="overlay <?php echo $reps == 0 ? "notactive" : ""; ?>" draggable="false">
-                        <form method="POST" action="remove-handle.php" enctype="multipart/form-data">
+                        <form method="POST" action="form-handles/remove-handle.php" enctype="multipart/form-data">
                             <input type="hidden" name="remove-img" value="<?php echo $filename; ?>" />
                             <button class="button-control button-remove" type="submit" title="Smazat">x</button>
                         </form>
@@ -52,7 +53,7 @@ if ($_SESSION["login"] !== true) {
                 <?php if ($free_slots >= $reps / 10 || $reps == 0) : ?>
                 <div class="rounded thumbnail mb-2 mr-3 border">
                     <div class="overlay no-transition">
-                        <form method="POST" action="upload-handle.php" enctype="multipart/form-data">
+                        <form method="POST" action="form-handles/upload-handle.php" enctype="multipart/form-data">
                             <input type="hidden" name="reps" value="<?php echo $reps; ?>" />
                             <input type="file" name="upload-img" class="d-none" />
                             <button class="button-control button-add" type="button" title="Přidat">+</button>
