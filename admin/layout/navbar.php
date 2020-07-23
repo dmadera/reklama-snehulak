@@ -14,7 +14,7 @@
                 <a class="nav-link" href="animation.php">Vizualizace animace</a>
             </li>
         </ul>
-        <span class="btn btn-outline-secondary mr-2">Autogenerování animace probíhá akždý den ve 4:00</span>
+        <span class="btn btn-outline-secondary mr-2">Autogenerování animace probíhá každý den ve 4:00</span>
         <a href="generate.php" class="btn btn-primary mr-2 generate">Manuálně vygenerovat animaci</a>
     </div>
 </nav>

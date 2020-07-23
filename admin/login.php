@@ -35,7 +35,6 @@ if ($_POST["login"] == "true") {
             <input type="password" name="password" id="inputPassword" class="form-control mb-2" placeholder="Heslo"
                 required>
             <button class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="true">Přihlásit</button>
-            <p class="mt-5 mb-3 text-muted">Prosím, přihlaste se.</p>
         </form>
     </div>
 </body>
