@@ -1,0 +1,83 @@
+@font-face {
+    font-family: microgbe;
+    src: url('./assets/microgbe.woff');
+    font-weight: bold;
+}
+
+header {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./layout/title-page-background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.logo {
+    display: block;
+}
+
+.logo img {
+    min-width: 200px;
+    width: 60%;
+    height: auto;
+}
+
+.main-menu li {
+    font-family: microgbe;
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+
+.main-menu a {
+    color: black;
+}
+
+.main-menu a:hover {
+    text-decoration: none;
+    color: #b0ca1e;
+}
+
+.navigation-scroll {
+    width: 100%;
+    position: absolute;
+    top: 90vh;
+    text-align: center;
+    font-size: 30px;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 10px 10px 0;
+    display: inline-block;
+    padding: 10px;
+}
+
+.arrow:hover {
+    border-color: #b0ca1e;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.title-card {
+    bottom: 0;
+    right: 0;
+}
+
+.title-card div {
+    background-color: #b0ca1e;
+    border-radius: 2rem;
+    font-family: microgbe;
+    font-size: 1.3em;
+}
+
+.navbar-nav a {
+    font-family: microgbe;
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.2em;
+    margin-right: 40px;
+}

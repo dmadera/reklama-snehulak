@@ -25,12 +25,12 @@
 
     <script>
         $(function() {
-            var img_url = "https://www.reklama-snehulak.cz/media/animation.gif";
+            var img_url = "https://reklama-snehulak.cz/media/animation.gif";
             var i = document.getElementById('animation');
             var lastmoddate = null;
-
-            i.src = img_url;
             var request = function() {
+                var timestamp = new Date().getTime();
+                i.src = img_url + "?t=" + timestamp;
                 $.get(i.src, function(data, status, xhr) {
                     var newmoddate = xhr.getResponseHeader('Last-Modified');
                     console.log("Current-moddate is " + lastmoddate + ", Updated-moddate is " + newmoddate + ".");
@@ -47,7 +47,7 @@
                 });
             }
             request();
-            setInterval(request, 60000);
+            setInterval(request, 300000);
         });
     </script>
 
