@@ -10,30 +10,51 @@ header {
     background-image: url('./layout/title-page-background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100% auto;
+    background-position: 50% 50%;
+}
+
+section {
+    /* height: 100vh; */
+}
+
+.anchor {
+    position: relative;
+    top: -35px;
+}
+
+.font-micro {
+    font-family: microgbe !important;
+    text-transform: uppercase;
 }
 
 .logo {
-    display: block;
+    min-width: 200px;
+    max-width: 400px;
 }
 
-.logo img {
+.logo a {
+    display: inline-block;
     min-width: 200px;
-    width: 60%;
+    width: 100%;
+}
+
+.logo a>img {
+    width: 100%;
     height: auto;
 }
 
-.main-menu li {
+.main-menu-item {
     font-family: microgbe;
     text-transform: uppercase;
     font-size: 1.5em;
 }
 
-.main-menu a {
+.main-menu-item a {
     color: black;
 }
 
-.main-menu a:hover {
+.main-menu-item a:hover {
     text-decoration: none;
     color: #b0ca1e;
 }
@@ -43,14 +64,14 @@ header {
     position: absolute;
     top: 90vh;
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .arrow {
     border: solid black;
-    border-width: 0 10px 10px 0;
+    border-width: 0 8px 8px 0;
     display: inline-block;
-    padding: 10px;
+    padding: 8px;
 }
 
 .arrow:hover {
@@ -71,7 +92,11 @@ header {
     background-color: #b0ca1e;
     border-radius: 2rem;
     font-family: microgbe;
-    font-size: 1.3em;
+    font-size: 1.2em;
+}
+
+.title-card h3 {
+    font-size: 1.0em;
 }
 
 .navbar-nav a {
@@ -80,4 +105,13 @@ header {
     color: white;
     font-size: 1.2em;
     margin-right: 40px;
+}
+
+.prices th,
+.prices td {
+    text-align: center;
+}
+
+#map_container {
+    height: 60vh;
 }

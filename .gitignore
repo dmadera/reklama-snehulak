@@ -1,2 +1,4 @@
 media/*.*
 admin/secret
+src/config.ini
+src/notification-data.json

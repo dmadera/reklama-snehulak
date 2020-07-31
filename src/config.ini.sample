@@ -1,0 +1,13 @@
+[smtp]
+host = smtp.savana.cz
+user = web@reklama-snehulak.cz
+password = xxxxxxxxxxxxxx
+
+[email]
+name = LED Reklama Sněhulák
+from = web@reklama-snehulak.cz
+
+[apikeys]
+map = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+captcha-client = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+captcha-server = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
