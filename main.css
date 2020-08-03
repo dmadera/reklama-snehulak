@@ -18,6 +18,10 @@ section {
     /* height: 100vh; */
 }
 
+.margin-auto {
+    margin: 0 auto;
+}
+
 .anchor {
     position: relative;
     top: -35px;
@@ -114,4 +118,21 @@ section {
 
 #map_container {
     height: 60vh;
+}
+
+.bg-green {
+    background: #b0ca1e !important;
+}
+
+.text-dark {
+    color: #343a40;
+}
+
+.list-checked {
+    list-style-image: url(layout/tick-dark.png);
+}
+
+.gallery img {
+    min-width: 200px;
+    max-width: 300px;
 }

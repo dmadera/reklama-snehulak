@@ -71,32 +71,44 @@
     </nav>
     <a class="anchor" id="introduction"></a>
     <section class="container mt-5">
-        <h2 class="text-center py-2">Introduction</h2>
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
+        <!-- <h2 class="text-center py-2">Introduction</h2> -->
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 justify-content-center">
+            <div class="bg-green mb-3 mb-md-0 mr-md-3 text-darl overflow-hidden rounded">
+                <div class="m-3 py-4 px-5">
+                    <h2 class="display-5 text-center">LED BANNER</h2>
+                    <ul class="pl-3">
+                        <li>každý den 7:00 - 19:00</li>
+                        <li>plocha 5,64 x 3,28 m (18,5 m<sup>2</sup>)</li>
+                        <li>střídání v pravidelných intervalech</li>
+                        <li>JPG obrázek 1120 x 640 px</li>
+                        <li>křizovatka pod OC Globus v Libereci</li>
+                    </ul>
                 </div>
             </div>
-            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
+            <div class="bg-green mb-3 mb-md-0 text-dark overflow-hidden rounded">
+                <div class="m-3 py-4 px-5">
+                    <h2 class="display-10 text-center">PROČ NÁŠ LED?</h2>
+                    <ul class="pl-3 list-checked list-unstyled">
+                        <li>nulové pořizovací náklady</li>
+                        <li>moderní reklama, která zaujme</li>
+                        <li>okamžité spuštění</li>
+                        <li>instantní výměna banneru</li>
+                        <li>průjezd 18 000 vozidel denně</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-            </div>
-            <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 justify-content-center">
+            <div class="bg-dark mb-3 mb-md-0 text-white overflow-hidden rounded">
+                <div class="m-3 p-3">
+                    <h2 class="display-10 text-center">Ukázky bannerů</h2>
+                    <div class="gallery text-center d-lg-flex flex-lg-wrap justify-content-center">
+                        <img class="flex-lg-fill m-1" src="layout/thumbnails/0.jpg" alt="Náhled banneru" />
+                        <img class="flex-lg-fill m-1" src="layout/thumbnails/1.jpg" alt="Náhled banneru" />
+                        <img class="flex-lg-fill m-1" src="layout/thumbnails/2.jpg" alt="Náhled banneru" />
+                        <img class="flex-lg-fill m-1" src="layout/thumbnails/3.jpg" alt="Náhled banneru" />
+                        <img class="flex-lg-fill m-1" src="layout/thumbnails/4.jpg" alt="Náhled banneru" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,7 +117,7 @@
     <a class="anchor" id="prices"></a>
     <section class="container mt-5">
         <h2 class="text-center py-2">Ceník služeb</h2>
-        <table class="prices table">
+        <table class="prices table table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Zobrazení za hodinu</th>
@@ -140,15 +152,14 @@
     <a class="anchor" id="map"></a>
     <section class="container mt-5">
         <h2 class="text-center py-2">Mapa umístění</h2>
-        <div class="mt-2" id="map_container">
+        <div class="mt-2 rounded" id="map_container">
     </section>
 
     <a class="anchor" id="contacts"></a>
     <section class="container mt-5">
         <h2 class="text-center py-2">Napište nám</h2>
         <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
+            <div class="col-12 col-md-8 margin-auto">
                 <form id="contactForm" method="post">
                     <div class="form-group">
                         <label for="nameInput">Jméno a příjmení</label>
@@ -175,7 +186,6 @@
                     </div>
                 </form>
             </div>
-            <div class="col-2"></div>
         </div>
     </section>
 
