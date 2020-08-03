@@ -1,11 +1,12 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 
 try {
-
-    //if($_POST['token'] != $_SESSION['token']) {
-    //    throw new Exception('invalid-token');
-    //}
+    $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+    if ($token != $_SESSION['token']) {
+        throw new Exception('invalid-token');
+    }
 
     if (!is_file("config.ini")) {
         throw new Exception('no-config-file');
@@ -13,26 +14,26 @@ try {
 
     $config = parse_ini_file("config.ini", true);
     $apikeys = $config['apikeys'];
-    $captcha = filter_input(INPUT_POST, 'captcha', FILTER_SANITIZE_STRING);
+    // $captcha = filter_input(INPUT_POST, 'captcha', FILTER_SANITIZE_STRING);
 
-    if (!$captcha) {
-        throw new Exception('captcha-error');
-    }
+    // if (!$captcha) {
+    //     throw new Exception('captcha-error');
+    // }
 
-    $url = 'https://www.google.com/recaptcha/api/siteverify';
-    $data = array('secret' => $apikeys['captcha-server'], 'response' => $captcha);
-    $options = array(
-        'http' => array(
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-    $context  = stream_context_create($options);
-    $response = file_get_contents($url, false, $context);
-    $response_keys = json_decode($response, true);
+    // $url = 'https://www.google.com/recaptcha/api/siteverify';
+    // $data = array('secret' => $apikeys['captcha-server'], 'response' => $captcha);
+    // $options = array(
+    //     'http' => array(
+    //         'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+    //         'method'  => 'POST',
+    //         'content' => http_build_query($data)
+    //     )
+    // );
+    // $context  = stream_context_create($options);
+    // $response = file_get_contents($url, false, $context);
+    // $response_keys = json_decode($response, true);
 
-    if (!$response_keys["success"]) throw new Exception('captcha-failure');
+    // if (!$response_keys["success"]) throw new Exception('captcha-failure');
 
 
     require('class.mailer.php');
@@ -60,7 +61,8 @@ try {
     }
 
     $mail = new MyPHPMailer(true);
-    $mail->addAddress('info@reklama-snehulak.cz');
+    // $mail->addAddress('info@reklama-snehulak.cz');
+    $mail->addAddress('madera.dan@gmail.com');
     $mail->addCC($email, $name);
     $mail->addReplyTo($email, $name);
     $mail->setSubject($subject);

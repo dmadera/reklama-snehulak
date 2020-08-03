@@ -1,3 +1,6 @@
+<?php
+require_once('src/init-session.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -8,9 +11,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./assets/bootstrap-4.5.0-dist/css/bootstrap.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css?time=<?php echo time(); ?>'>
-    <?php
-    require_once('src/init-session.php');
-    ?>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script type="text/javascript">
     var apiCaptchaToken = "<?php echo $apikeys['captcha-client']; ?>";
     window.localStorage.setItem('token', '<?php echo $token; ?>');
@@ -44,39 +45,54 @@
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark d-none">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark d-lg-none">
         <a class="navbar-brand" href="#top">
             <img src="layout/icon.png" height="50" alt="LED Reklama Sněhulák Liberec" loading="lazy">
             <h1 class="d-none d-lg-inline pl-3 font-weight-bold mb-0" style="font-size: 1.1em;">
                 <span class="d-none">LED </span>Reklama Sněhulák Liberec
             </h1>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-3 ml-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#introduction">Informace</a>
+                    <a class="nav-link" data-toggle="collapse" data-target="#navbarToggler"
+                        href="#introduction">Informace</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#prices">Ceník</a>
+                    <a class="nav-link" data-toggle="collapse" data-target="#navbarToggler" href="#prices">Ceník</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contacts">Kontakt</a>
+                    <a class="nav-link" data-toggle="collapse" data-target="#navbarToggler" href="#map">Mapa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" data-target="#navbarToggler" href="#contacts">Kontakt</a>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <section class="d-lg-none" style="margin-top: 85px;">
+        <div class="logo margin-auto px-5 pt-1">
+            <a href="#top"><img src="./layout/logo.svg" alt="LED Reklama Sněhulák Liberec" /></a>
+        </div>
+        <div class="d-flex justify-content-middle mt-3">
+            <img src="./layout/eye.png" alt="EYE" class="w-40 d-none d-sm-block" />
+            <img src="./layout/led.png" alt="LED" class="img-w-60" />
+        </div>
+    </section>
+
     <a class="anchor" id="introduction"></a>
-    <section class="container mt-5">
+    <section class="container mt-3">
         <!-- <h2 class="text-center py-2">Introduction</h2> -->
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 justify-content-center">
-            <div class="bg-green mb-3 mb-md-0 mr-md-3 text-darl overflow-hidden rounded">
-                <div class="m-3 py-4 px-5">
+        <div class="d-md-flex flex-lg-equal w-100 my-3 justify-content-center">
+            <div class="bg-green mb-3 mb-md-0 mr-md-3 text-darl overflow-hidden rounded align-self-stretch">
+                <div class="m-3 py-3 px-2 py-md-4 px-md-4">
                     <h2 class="display-5 text-center">LED BANNER</h2>
-                    <ul class="pl-3">
+                    <ul class="pl-4">
                         <li>každý den 7:00 - 19:00</li>
                         <li>plocha 5,64 x 3,28 m (18,5 m<sup>2</sup>)</li>
                         <li>střídání v pravidelných intervalech</li>
@@ -85,10 +101,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="bg-green mb-3 mb-md-0 text-dark overflow-hidden rounded">
-                <div class="m-3 py-4 px-5">
+            <div class="bg-green text-dark overflow-hidden rounded align-self-stretch">
+                <div class="m-3 py-3 px-2 py-md-4 px-md-4">
                     <h2 class="display-10 text-center">PROČ NÁŠ LED?</h2>
-                    <ul class="pl-3 list-checked list-unstyled">
+                    <ul class="pl-4 list-checked list-unstyled">
                         <li>nulové pořizovací náklady</li>
                         <li>moderní reklama, která zaujme</li>
                         <li>okamžité spuštění</li>
@@ -98,9 +114,9 @@
                 </div>
             </div>
         </div>
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 justify-content-center">
-            <div class="bg-dark mb-3 mb-md-0 text-white overflow-hidden rounded">
-                <div class="m-3 p-3">
+        <div class="d-md-flex flex-md-equal w-100 my-3 justify-content-center">
+            <div class="bg-dark mb-3 text-white overflow-hidden rounded">
+                <div class="m-1 m-lg-3 py-3 py-md-4">
                     <h2 class="display-10 text-center">Ukázky bannerů</h2>
                     <div class="gallery text-center d-lg-flex flex-lg-wrap justify-content-center">
                         <img class="flex-lg-fill m-1" src="layout/thumbnails/0.jpg" alt="Náhled banneru" />

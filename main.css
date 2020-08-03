@@ -20,7 +20,7 @@ header {
 
 .anchor {
     position: relative;
-    top: -35px;
+    top: -60px;
 }
 
 .font-micro {
@@ -124,11 +124,24 @@ header {
     color: #343a40;
 }
 
+.w-40 {
+    width: 40%;
+}
+
+.img-w-60 {
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    .img-w-60 {
+        width: 60%;
+    }
+}
+
 .list-checked {
     list-style-image: url(layout/tick-dark.png);
 }
 
 .gallery img {
-    min-width: 200px;
     max-width: 300px;
 }

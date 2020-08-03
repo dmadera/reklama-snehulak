@@ -1,13 +1,11 @@
 function showAndHideNavsByScroll() {
     var scroll = $(window).scrollTop();
     if (scroll < 20) {
-        $('.navbar').addClass('d-none');
+        $('.navbar').addClass('d-lg-none');
         $('.title-navbar').removeClass('d-none');
-        $('.rc-anchor').hide();
     } else {
         $('.title-navbar').addClass('d-none');
-        $('.navbar').removeClass('d-none');
-        $('.rc-anchor').show();
+        $('.navbar').removeClass('d-lg-none');
     }
 }
 
@@ -60,47 +58,40 @@ $('#contactForm').submit(function(event) {
         request.abort();
     }
 
-    grecaptcha.ready(function() {
-        grecaptcha.execute(
-                window.localStorage.getItem('api-captcha-client'), { action: 'send_contact_form' })
-            .then(function(captcha_token) {
+    data += '&token=' + window.localStorage.getItem('token');
+    // data += '&captcha=' + captcha_token;
 
-                data += '&token=' + window.localStorage.getItem('token');
-                data += '&captcha=' + captcha_token;
+    console.log(data);
 
-                console.log(data);
+    request = $.ajax({
+        url: "src/contact-form.php",
+        type: "POST",
+        dataType: 'json',
+        contentType: 'application/x-www-form-urlencoded',
+        data: data
+    });
 
-                request = $.ajax({
-                    url: "scripts/contact-form.php",
-                    type: "POST",
-                    dataType: 'json',
-                    contentType: 'application/x-www-form-urlencoded',
-                    data: data
-                });
+    request.done(function(response, textStatus, jqXHR) {
+        console.log(response);
 
-                request.done(function(response, textStatus, jqXHR) {
-                    console.log(response);
+        if (response.success) {
+            form[0].reset();
+            showMessage('message-success', response);
+        } else {
+            showMessage('message-failure', response);
+        }
+    });
 
-                    if (response.success) {
-                        form[0].reset();
-                        showMessage('message-success', response);
-                    } else {
-                        showMessage('message-failure', response);
-                    }
-                });
+    request.fail(function(jqXHR, textStatus, errorThrown) {
+        console.error(
+            "The following error occurred: " +
+            textStatus, errorThrown
+        );
+        showMessage('message-failure', errorThrown);
+    });
 
-                request.fail(function(jqXHR, textStatus, errorThrown) {
-                    console.error(
-                        "The following error occurred: " +
-                        textStatus, errorThrown
-                    );
-                    showMessage('message-failure', errorThrown);
-                });
-
-                request.always(function() {
-                    inputs.prop("disabled", false);
-                });
-            });
+    request.always(function() {
+        inputs.prop("disabled", false);
     });
 });
 
@@ -126,7 +117,7 @@ function showMessage(type, details) {
             setModalData(modal, "Chyba odeslání zprávy", `
           Zprávu se nepodařilo odeslat.
           Zkotrolujte, zda máte správně vyplněný formulář z zkuste to znovu.<br>
-          V případě dalšího selhání nás kontaktujte, prosím, přímo na emailu - info@skiareal-krkonose.cz.<br>
+          V případě dalšího selhání nás kontaktujte, prosím, přímo na emailu - info@reklama-snehulak.cz.<br>
           Děkujeme.<br>
           <br>
           Detail chyby: ` + JSON.stringify(details) + `

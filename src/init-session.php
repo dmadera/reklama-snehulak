@@ -17,6 +17,6 @@ if (!array_key_exists('main_modal', $json_data) || !array_key_exists('show', $js
     $main_modal = $json_data['main_modal'];
 }
 
-//session_start();
+session_start();
 $token = md5(rand(1000, 9999));
 $_SESSION['token'] = $token;
