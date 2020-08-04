@@ -80,8 +80,8 @@ require_once('src/init-session.php');
             <a href="#top"><img src="./layout/logo.svg" alt="LED Reklama Sněhulák Liberec" /></a>
         </div>
         <div class="d-flex justify-content-middle mt-3">
-            <img src="./layout/eye.png" alt="EYE" class="w-40 d-none d-sm-block" />
-            <img src="./layout/led.png" alt="LED" class="img-w-60" />
+            <img src="./layout/eye.jpg" alt="EYE" class="w-40 d-none d-sm-block" />
+            <img src="./layout/led.jpg" alt="LED" class="img-w-60" />
         </div>
     </section>
 
@@ -97,7 +97,7 @@ require_once('src/init-session.php');
                         <li>plocha 5,64 x 3,28 m (18,5 m<sup>2</sup>)</li>
                         <li>střídání v pravidelných intervalech</li>
                         <li>JPG obrázek 1120 x 640 px</li>
-                        <li>křizovatka pod OC Globus v Libereci</li>
+                        <li>kruhová křizovatka Sněhulák pod OC Globus v Libereci</li>
                     </ul>
                 </div>
             </div>
@@ -107,8 +107,9 @@ require_once('src/init-session.php');
                     <ul class="pl-4 list-checked list-unstyled">
                         <li>nulové pořizovací náklady</li>
                         <li>moderní reklama, která zaujme</li>
-                        <li>okamžité spuštění</li>
-                        <li>instantní výměna banneru</li>
+                        <li>rychlé spuštění reklamy</li>
+                        <li>možná okamžitá záměna reklamy</li>
+                        <li>nejvytíženější dopravní místo v Liberci</li>
                         <li>průjezd 18 000 vozidel denně</li>
                     </ul>
                 </div>
@@ -124,6 +125,7 @@ require_once('src/init-session.php');
                         <img class="flex-lg-fill m-1" src="layout/thumbnails/2.jpg" alt="Náhled banneru" />
                         <img class="flex-lg-fill m-1" src="layout/thumbnails/3.jpg" alt="Náhled banneru" />
                         <img class="flex-lg-fill m-1" src="layout/thumbnails/4.jpg" alt="Náhled banneru" />
+                        <img class="flex-lg-fill m-1" src="layout/thumbnails/5.jpg" alt="Náhled banneru" />
                     </div>
                 </div>
             </div>
@@ -136,30 +138,34 @@ require_once('src/init-session.php');
         <table class="prices table table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Zobrazení za hodinu</th>
-                    <th scope="col">Zobrazení za měsíc</th>
-                    <th scope="col">Cena za 1 zobrazení</th>
-                    <th scope="col">Cena za měsíc</th>
+                    <th scope="col"><span class="d-none d-md-inline">Zobrazení za hodinu</span><span
+                            class="d-md-none">Zobraz / hod</span></th>
+                    <th scope="col"><span class="d-none d-md-inline">Zobrazení za měsíc</span><span
+                            class="d-md-none">Zobraz / měs</span></th>
+                    <th scope="col"><span class="d-none d-md-inline">Cena za zobrazení</span><span
+                            class="d-md-none">Cena / zobraz</span></th>
+                    <th scope="col"><span class="d-none d-md-inline">Cena za měsíc</span><span class="d-md-none">Cena /
+                            měs</span></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">40</th>
-                    <td>14 400</td>
-                    <td>0,48 Kč</td>
-                    <td>6 900 Kč</td>
+                    <td scope="row">min<span class="d-none d-md-inline">imálně</span> 40x</td>
+                    <td class="text-nowrap">14 400</td>
+                    <td>0,48<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">6 900<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
                 <tr>
-                    <th scope="row">20</th>
-                    <td>7 200</td>
-                    <td>0,63 Kč</td>
-                    <td>4 500 Kč</td>
+                    <td scope="row">min<span class="d-none d-md-inline">imálně</span> 20x</td>
+                    <td class="text-nowrap">7 200</td>
+                    <td>0,63<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">4 500<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
                 <tr>
-                    <th scope="row">10</th>
-                    <td>3 600</td>
-                    <td>0,81 Kč</td>
-                    <td>2 900 Kč</td>
+                    <td scope="row">min<span class="d-none d-md-inline">imálně</span> 10x</td>
+                    <td class="text-nowrap">3 600</td>
+                    <td>0,81<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">2 900<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
             </tbody>
         </table>
@@ -168,7 +174,11 @@ require_once('src/init-session.php');
     <a class="anchor" id="map"></a>
     <section class="container mt-5">
         <h2 class="text-center py-2">Mapa umístění</h2>
-        <div class="mt-2 rounded" id="map_container">
+        <div class="d-flex flex-wrap align-items-stretch">
+            <div class="w-100 w-lg-50" id="map_container"></div>
+            <div class="w-100 w-lg-50 map-directions">
+            </div>
+        </div>
     </section>
 
     <a class="anchor" id="contacts"></a>
@@ -207,20 +217,19 @@ require_once('src/init-session.php');
 
     <footer class="container mt-5">
         <div class="row">
-            <div class="col-6 col-md text-center">
-                <img src="layout/icon-dark.png" height="50" alt="LED Reklama Sněhulák Liberec" loading="lazy">
+            <div class="col-12 col-lg-4 mb-2 text-center">
+                <img src="layout/icon-dark.png" height="50" alt="LED Reklama Sněhulák Liberec" loading="lazy"><br />
+                <span class="d-block my-2">&copy; <?php echo date("Y"); ?></span>
             </div>
-            <div class="col-6 col-md text-center">
+            <div class="col-12 col-lg-4 text-center">
                 <h5>Kontakt</h5>
                 <ul class="list-unstyled text-small">
                     <li class="text-muted"><a href="mailto:info@reklama-snehulak.cz"
                             title="Email">info@reklama-snehulak.cz</a></li>
                     <li class="text-muted">(+420) 602 200 991</li>
-                    <li>&nbsp;</li>
-                    <li>&copy; <?php echo date("Y"); ?></li>
                 </ul>
             </div>
-            <div class="col-6 col-md text-center">
+            <div class="col-12 col-lg-4 text-center">
                 <h5>Provozní doba</h5>
                 <ul class="list-unstyled text-small">
                     <li class="text-muted">07:00 - 19:00</li>

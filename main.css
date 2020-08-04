@@ -138,6 +138,27 @@ header {
     }
 }
 
+@media (min-width: 992px) {
+    .w-lg-50 {
+        width: 50% !important;
+    }
+}
+
+.map-directions {
+    background-image: url(layout/map-directions.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    min-height: 320px;
+    min-width: 250px;
+    margin: 0 auto;
+}
+
+.map-google {
+    height: auto;
+    min-height: 320px;
+}
+
 .list-checked {
     list-style-image: url(layout/tick-dark.png);
 }

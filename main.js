@@ -33,7 +33,7 @@ function initMap() {
     var location = { lat: 50.776201, lng: 15.036313 };
     var map = new google.maps.Map(document.getElementById('map_container'), {
         center: location,
-        zoom: 18
+        zoom: 17
     });
 
     var marker = new google.maps.Marker({
