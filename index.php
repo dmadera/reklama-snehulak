@@ -1,5 +1,7 @@
 <?php
 require_once('src/init-session.php');
+$random = md5(rand(1000, 9999));
+header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' 'strict-dynamic'; base-uri 'none';");
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,16 +9,14 @@ require_once('src/init-session.php');
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <!-- <meta http-equiv='Content-Security-Policy'
+        content="object-src 'none'; script-src 'nonce-<?php // echo $random; 
+                                                        ?>' 'strict-dynamic'; base-uri 'none';"> -->
     <title>LED Reklama Sněhulák</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./assets/bootstrap-4.5.0-dist/css/bootstrap.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css?time=<?php echo time(); ?>'>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script type="text/javascript">
-    var apiCaptchaToken = "<?php echo $apikeys['captcha-client']; ?>";
-    window.localStorage.setItem('token', '<?php echo $token; ?>');
-    window.localStorage.setItem('api-captcha-client', apiCaptchaToken);
-    </script>
 </head>
 
 <body>
@@ -38,7 +38,7 @@ require_once('src/init-session.php');
             <a href="#introduction" alt="Další informace"><i class="arrow down"></i></a>
         </p>
         <div class="title-card d-flex flex-row-reverse position-absolute">
-            <div class="m-4 p-4 text-center">
+            <div class="m-5 p-4 text-center">
                 <h3>MODERNÍ LED REKLAMA</h3>
                 <span>kruhová križovatka <br>pod OC Globus v Liberci</span>
             </div>
@@ -187,17 +187,20 @@ require_once('src/init-session.php');
         <div class="row">
             <div class="col-12 col-md-8 margin-auto">
                 <form id="contactForm" method="post">
+                    <input type="hidden" name="token" value="<?php echo $token; ?>" />
                     <div class="form-group">
                         <label for="nameInput">Jméno a příjmení</label>
-                        <input type="text" name="name" class="form-control" id="nameInput" placeholder="" required />
+                        <input type="text" name="name" class="form-control" id="nameInput" placeholder="Jan Novák"
+                            required />
                     </div>
                     <div class="form-group">
                         <label for="emailInput">Email</label>
-                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="" required />
+                        <input type="email" name="email" class="form-control" id="emailInput" placeholder="jan@novak.cz"
+                            required />
                     </div>
                     <div class="form-group">
                         <label for="subjectSelect">Předmět zprávy</label>
-                        <input type="text" name="subject" class="form-control" id="subjectInput" placeholder=""
+                        <input type="text" name="subject" class="form-control" id="subjectInput" placeholder="Dotaz"
                             required />
                     </div>
                     <div class="form-group">
@@ -206,9 +209,10 @@ require_once('src/init-session.php');
                             rows="5"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block submit">
-                            Odeslat
-                        </button>
+                        <button class="g-recaptcha btn btn-primary btn-lg btn-block submit"
+                            data-sitekey="<?php echo $apikeys['captcha-client']; ?>" data-callback='onSubmit'
+                            data-action='submit'>Odeslat</button>
+
                     </div>
                 </form>
             </div>
@@ -256,12 +260,14 @@ require_once('src/init-session.php');
         </div>
     </div>
     </div>
-    <script src="./assets/jquery-3.5.1.min.js"></script>
-    <script src="./assets/popper.min.js"></script>
-    <script src="./assets/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
-    <script src="main.js?time=<?php echo time(); ?>"></script>
+    <script src="./assets/jquery-3.5.1.min.js" nonce="<?php echo $random; ?>"></script>
+    <script src="./assets/popper.min.js" nonce="<?php echo $random; ?>"></script>
+    <script src="./assets/bootstrap-4.5.0-dist/js/bootstrap.min.js" nonce="<?php echo $random; ?>"></script>
+    <script src="./main.js?time=<?php echo time(); ?>" nonce="<?php echo $random; ?>"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $apikeys["map"]; ?>&callback=initMap" async
-        defer></script>
+        defer nonce="<?php echo $random; ?>"></script>
+    <script src="https://www.google.com/recaptcha/api.js" nonce="<?php echo $random; ?>"></script>
+
 </body>
 
 </html>

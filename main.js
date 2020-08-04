@@ -44,6 +44,11 @@ function initMap() {
 }
 
 var request;
+
+function onSubmit(token) {
+    $('#contactForm').submit();
+}
+
 $('#contactForm').submit(function(event) {
     event.preventDefault();
 
@@ -57,10 +62,6 @@ $('#contactForm').submit(function(event) {
     if (request) {
         request.abort();
     }
-
-    data += '&token=' + window.localStorage.getItem('token');
-    // data += '&captcha=' + captcha_token;
-
     console.log(data);
 
     request = $.ajax({
@@ -84,8 +85,7 @@ $('#contactForm').submit(function(event) {
 
     request.fail(function(jqXHR, textStatus, errorThrown) {
         console.error(
-            "The following error occurred: " +
-            textStatus, errorThrown
+            "The following error occurred: ", jqXHR, textStatus, errorThrown
         );
         showMessage('message-failure', errorThrown);
     });
