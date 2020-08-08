@@ -81,7 +81,7 @@ header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' '
         </div>
         <div class="d-flex justify-content-middle mt-3">
             <img src="./layout/eye.jpg" alt="EYE" class="w-40 d-none d-sm-block" />
-            <img src="./layout/led.jpg" alt="LED" class="img-w-60" />
+            <img src="./layout/led.jpg" alt="LED" class="img-w-60 led-img-sm" />
         </div>
     </section>
 
@@ -151,19 +151,19 @@ header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' '
             <tbody>
                 <tr>
                     <td scope="row">min<span class="d-none d-md-inline">imálně</span> 40x</td>
-                    <td class="text-nowrap">14 400</td>
+                    <td class="text-nowrap">14 400x</td>
                     <td>0,48<span class="d-none d-md-inline"> Kč</span></td>
                     <td class="text-nowrap">6 900<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
                 <tr>
                     <td scope="row">min<span class="d-none d-md-inline">imálně</span> 20x</td>
-                    <td class="text-nowrap">7 200</td>
+                    <td class="text-nowrap">7 200x</td>
                     <td>0,63<span class="d-none d-md-inline"> Kč</span></td>
                     <td class="text-nowrap">4 500<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
                 <tr>
                     <td scope="row">min<span class="d-none d-md-inline">imálně</span> 10x</td>
-                    <td class="text-nowrap">3 600</td>
+                    <td class="text-nowrap">3 600x</td>
                     <td>0,81<span class="d-none d-md-inline"> Kč</span></td>
                     <td class="text-nowrap">2 900<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
@@ -221,10 +221,6 @@ header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' '
 
     <footer class="container mt-5">
         <div class="row">
-            <div class="col-12 col-lg-4 mb-2 text-center">
-                <img src="layout/icon-dark.png" height="50" alt="LED Reklama Sněhulák Liberec" loading="lazy"><br />
-                <span class="d-block my-2">&copy; <?php echo date("Y"); ?></span>
-            </div>
             <div class="col-12 col-lg-4 text-center">
                 <h5>Kontakt</h5>
                 <ul class="list-unstyled text-small">
@@ -238,6 +234,10 @@ header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' '
                 <ul class="list-unstyled text-small">
                     <li class="text-muted">07:00 - 19:00</li>
                 </ul>
+            </div>
+            <div class="col-12 col-lg-4 mb-2 text-center">
+                <img src="layout/icon-dark.png" height="50" alt="LED Reklama Sněhulák Liberec" loading="lazy"><br />
+                <span class="d-block my-2">&copy; <?php echo date("Y"); ?></span>
             </div>
         </div>
     </footer>

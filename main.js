@@ -9,6 +9,23 @@ function showAndHideNavsByScroll() {
     }
 }
 
+function randomIntFromInterval(min, max) {
+    let result = Math.floor(Math.random() * (max - min + 1) + min);
+    if (result < min) {
+        result = min;
+    } else if (result > max) {
+        result = max;
+    }
+    return result;
+}
+
+let rand = randomIntFromInterval(0, 1);
+console.log(rand);
+if (rand == 0) {
+    $("header").addClass('lipa');
+    $(".led-img-sm").attr('src', "./layout/led1.jpg");
+}
+
 $(function() {
     $("a").on('click', function(event) {
         if (this.hash !== "") {
