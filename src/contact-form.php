@@ -59,8 +59,7 @@ try {
     }
 
     $mail = new MyPHPMailer(true);
-    // $mail->addAddress('info@reklama-snehulak.cz');
-    $mail->addAddress('madera.dan@gmail.com');
+    $mail->addAddress('info@reklama-snehulak.cz');
     $mail->addCC($email, $name);
     $mail->addReplyTo($email, $name);
     $mail->setSubject($subject);
