@@ -123,6 +123,7 @@ header.lipa {
 
 .bg-green {
     background: #b0ca1e !important;
+    flex-basis: 100%
 }
 
 .text-dark {
@@ -135,18 +136,6 @@ header.lipa {
 
 .img-w-60 {
     width: 100%;
-}
-
-@media (min-width: 576px) {
-    .img-w-60 {
-        width: 60%;
-    }
-}
-
-@media (min-width: 992px) {
-    .w-lg-50 {
-        width: 50% !important;
-    }
 }
 
 .map-directions {
@@ -170,4 +159,50 @@ header.lipa {
 
 .gallery img {
     max-width: 300px;
+}
+
+.contact {
+    display: block;
+    background-size: auto 75%;
+    background-repeat: no-repeat;
+    color: #343a40;
+    line-height: 30px;
+    font-size: large;
+    text-align: center;
+    border: 1px solid lightgrey;
+    padding: 5px;
+}
+
+.contact:hover {
+    text-decoration: none;
+    background-color: lightgrey;
+    color: #343a40;
+}
+
+.contact.phone {
+    background-position: 99% 50%;
+    background-image: url('layout/icon-phone.svg');
+    padding-right: 50px;
+}
+
+.contact.email {
+    background-position: 3% 50%;
+    background-image: url('layout/icon-email.svg');
+    padding-left: 50px;
+}
+
+@media (min-width: 576px) {
+    .img-w-60 {
+        width: 60%;
+    }
+    .contact {
+        font-size: x-large;
+        line-height: 70px;
+    }
+}
+
+@media (min-width: 992px) {
+    .w-lg-50 {
+        width: 50% !important;
+    }
 }
