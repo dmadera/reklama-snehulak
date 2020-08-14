@@ -14,6 +14,18 @@ header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' '
     <link rel='stylesheet' type='text/css' media='screen' href='./assets/bootstrap-4.5.0-dist/css/bootstrap.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css?time=<?php echo time(); ?>'>
     <link rel="icon" type="image/png" href="favicon.png?v=1">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84479252-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-84479252-3');
+    </script>
+
 </head>
 
 <body>
