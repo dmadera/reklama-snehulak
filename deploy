@@ -1,4 +1,4 @@
 #!/bin/bash
 
 mydir="${0%/*}"
-rsync -vrI --exclude-from "$mydir"/exclude --progress --delete "$mydir/" -e ssh user@savana:/www/reklama-snehulak.cz
+rsync -vrI --exclude-from "$mydir"/exclude --progress "$mydir/" -e ssh user@savana:/www/reklama-snehulak.cz

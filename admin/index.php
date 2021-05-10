@@ -30,7 +30,7 @@ if ($_SESSION["login"] !== true) {
         <div class="row p-3">
             <?php
                 if ($reps == 0) $title = "Vyřazené reklamy";
-                else $title = $reps . "x za hodinu <small class='float-right'>volných pozic: " . floor($free_slots / ($reps / 10)) . "</small>";
+                else $title = $reps . "x za hodinu <small class='float-right'>volných pozic: " . floor($free_slots / ($reps / 2)) . "</small>";
                 ?>
             <h3 class="d-block w-100"><?php echo $title; ?></h3>
             <div class="d-flex flex-wrap flex-row align-items-center">
