@@ -93,15 +93,28 @@ function get_slots()
     return $slots;
 }
 
-function get_count_free_slots(&$slots)
+function get_free_slots_count_rep0()
 {
-    $count = 0;
-    foreach ($slots as $slot) {
-        if ($slot === -1) {
-            $count++;
-        }
+    global $REPS, $SLOTS_COUNT, $SLOT_LIMIT, $INTERVAL;
+
+    $total = $SLOTS_COUNT / $INTERVAL;
+    foreach ($REPS as $reps) {
+        if($reps == 0) continue;
+
+        $countfiles = count(get_files($reps));
+        $total -= $countfiles / ($REPS[0]/$reps);
     }
-    return $count;
+    return $total;
+}
+
+function get_free_slots_count($reps)
+{
+    global $REPS;
+
+    if($reps == 0) return -1;
+
+    $total = get_free_slots_count_rep0();
+    return floor($total * $REPS[0]/$reps);
 }
 
 function move_slot_vals(&$slots, $index)

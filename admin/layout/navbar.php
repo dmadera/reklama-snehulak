@@ -14,7 +14,7 @@
                 <a class="nav-link" href="animation.php">Vizualizace animace</a>
             </li>
         </ul>
-        <span class="btn btn-outline-secondary mr-2">Autogenerování animace probíhá každý den ve 4:00</span>
+        <span class="btn btn-outline-secondary mr-2"><?php echo sprintf("Interval: %.1f s | Max %d reklam zobrazovaných 60x za hodinu", $INTERVAL, $SLOTS_COUNT / $INTERVAL); ?></span>
         <a href="generate.php" class="btn btn-primary mr-2 generate">Manuálně vygenerovat animaci</a>
     </div>
 </nav>
