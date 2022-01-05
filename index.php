@@ -184,20 +184,20 @@ header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' '
                 <tr>
                     <td>min<span class="d-none d-md-inline">imálně</span> 60x</td>
                     <td class="text-nowrap">21 600 x</td>
-                    <td>0,32<span class="d-none d-md-inline"> Kč</span></td>
-                    <td class="text-nowrap">6 900<span class="d-none d-md-inline"> Kč</span></td>
+                    <td>0,35<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">7 500<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
                 <tr>
                     <td>min<span class="d-none d-md-inline">imálně</span> 30x</td>
                     <td class="text-nowrap">10 800 x</td>
-                    <td>0,42<span class="d-none d-md-inline"> Kč</span></td>
-                    <td class="text-nowrap">4 500<span class="d-none d-md-inline"> Kč</span></td>
+                    <td>0,45<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">4 900<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
                 <tr>
                     <td>min<span class="d-none d-md-inline">imálně</span> 15x</td>
                     <td class="text-nowrap">5 400 x</td>
-                    <td>0,53<span class="d-none d-md-inline"> Kč</span></td>
-                    <td class="text-nowrap">2 900<span class="d-none d-md-inline"> Kč</span></td>
+                    <td>0,65<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">3 500<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
             </tbody>
         </table>
