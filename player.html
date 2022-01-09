@@ -3,10 +3,10 @@
 
 <head>
     <meta charset='utf-8'></meta>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
     <title>LED Reklama Sněhulák</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'></meta>
-    <script src="https://www.reklama-snehulak.cz/assets/jquery-3.5.1.min.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png?v=1" />
     <style>
         * {
             margin: 0;
@@ -16,45 +16,18 @@
         body {
             width: 100%;
             overflow: hidden;
+            background-color: black;
         }
         
         img {
             width: 100%;
         }
     </style>
-
-    <script>
-        $(function() {
-            var img_url = "https://reklama-snehulak.cz/media/animation.gif";
-            var i = document.getElementById('animation');
-            var lastmoddate = null;
-            var request = function() {
-                var timestamp = new Date().getTime();
-                i.src = img_url + "?t=" + timestamp;
-                $.get(i.src, function(data, status, xhr) {
-                    var newmoddate = xhr.getResponseHeader('Last-Modified');
-                    console.log("Current-moddate is " + lastmoddate + ", Updated-moddate is " + newmoddate + ".");
-                    if (lastmoddate == null) {
-                        console.log("First load.");
-                        lastmoddate = newmoddate;
-                        var timestamp = new Date().getTime();
-                        i.src = img_url + "?t=" + timestamp;
-                        return;
-                    } else if (status == "success" && newmoddate != lastmoddate) {
-                        console.log("Animation is changed. Reloading.");
-                        location.reload();
-                    }
-                });
-            }
-            request();
-            setInterval(request, 300000);
-        });
-    </script>
-
 </head>
 
 <body>
-    <img id="animation" src="" />
+    <img id="animation" src="" style="display: none" />
+    <script type="text/javascript" src="player.js?v=12"></script> 
 </body>
 
 </html>
