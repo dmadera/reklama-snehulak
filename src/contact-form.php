@@ -51,7 +51,7 @@ try {
     }
 
     if (empty($subject)) {
-        throw new Exception('invalid-subject');
+        $subject = "Dotaz";
     }
 
     if (empty($message)) {
@@ -68,7 +68,7 @@ try {
         <<<HTML
     Byla vytvořena zpráva z webu reklama-snehulak.cz<br/>
     od <b>$name</b> (email: $email)<br/><br/>
-    Text zprávy:<br/><b>$htmlmsg</b>"
+    Text zprávy:<br/><b>$htmlmsg</b>
 HTML;
 
     $mail->setBody($body);

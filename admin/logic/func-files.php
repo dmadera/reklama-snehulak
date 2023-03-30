@@ -25,7 +25,7 @@ function get_filename_reps($filename)
 
 function get_filename($reps, $index)
 {
-    return 'img-' . $reps . '-' . $index . '.jpg';
+    return 'img-' . $reps . '-' . sprintf('%02d', $index) . '.jpg';
 }
 
 function get_filename_new($reps)

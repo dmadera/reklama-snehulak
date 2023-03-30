@@ -184,23 +184,27 @@ header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' '
                 <tr>
                     <td>min<span class="d-none d-md-inline">imálně</span> 60x</td>
                     <td class="text-nowrap">21 600 x</td>
-                    <td>0,35<span class="d-none d-md-inline"> Kč</span></td>
-                    <td class="text-nowrap">7 500<span class="d-none d-md-inline"> Kč</span></td>
+                    <td>0,39<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">8 400<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
                 <tr>
                     <td>min<span class="d-none d-md-inline">imálně</span> 30x</td>
                     <td class="text-nowrap">10 800 x</td>
-                    <td>0,45<span class="d-none d-md-inline"> Kč</span></td>
-                    <td class="text-nowrap">4 900<span class="d-none d-md-inline"> Kč</span></td>
+                    <td>0,50<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">5 400<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
                 <tr>
                     <td>min<span class="d-none d-md-inline">imálně</span> 15x</td>
                     <td class="text-nowrap">5 400 x</td>
-                    <td>0,65<span class="d-none d-md-inline"> Kč</span></td>
-                    <td class="text-nowrap">3 500<span class="d-none d-md-inline"> Kč</span></td>
+                    <td>0,70<span class="d-none d-md-inline"> Kč</span></td>
+                    <td class="text-nowrap">3 800<span class="d-none d-md-inline"> Kč</span></td>
                 </tr>
             </tbody>
         </table>
+        <p>
+            Pro zobrazení 60x za hodinu se můžou střídat 2 nebo 4 různé bannery.<br />
+            Pro zobrazení 30x za hodinu se můžou střídat 2 různé bannery.
+        </p>
     </section>
 
     <a class="anchor" id="map"></a>
@@ -218,8 +222,8 @@ header("Content-Security-Policy: object-src 'none'; script-src 'nonce-$random' '
         <h2 class="text-center py-2">Kotaktujte nás</h2>
         <div class="row">
             <div class="col-12 col-lg-6 mb-3 mb-lg-0">
-                <a href="mailto:info@reklama-snehulak.cz" title="Napište nám"
-                    class="contact email">info@reklama-sněkulák.cz</a>
+                <a href="mailto:info@reklama-snehulak.cz" title="Napište nám" class="contact email"
+                    target="_blank">info@reklama-snehulak.cz</a>
             </div>
             <div class="col-12 col-lg-6">
                 <a href="tel:+420602200991" title="Zavolejte nám" class="contact phone">(+420) 602 200 991</a>

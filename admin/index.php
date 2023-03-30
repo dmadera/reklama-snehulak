@@ -25,7 +25,7 @@ if ($_SESSION["login"] !== true) {
     ?>
     <div class="container-fluid">
         <?php foreach ($REPS as $reps) : ?>
-            
+
         <div class="row p-3">
             <?php
                 if ($reps == 0) $title = "Vyřazené reklamy";
@@ -34,7 +34,8 @@ if ($_SESSION["login"] !== true) {
             <h3 class="d-block w-100"><?php echo $title; ?></h3>
             <div class="d-flex flex-wrap flex-row align-items-center">
                 <?php foreach (get_files($reps) as $key => $filename) : ?>
-                <div class="drop mb-2" data-position="<?php echo $key; ?>" data-reps="<?php echo $reps; ?>" droppable="true"></div>
+                <div class="drop mb-2" data-position="<?php echo $key; ?>" data-reps="<?php echo $reps; ?>"
+                    droppable="true"></div>
                 <div class="rounded thumbnail mb-2 border">
                     <img src="<?php echo "../media/" . $filename . "?" . time(); ?>" alt="<?php echo $filename; ?>"
                         draggable="true">
@@ -46,7 +47,8 @@ if ($_SESSION["login"] !== true) {
                     </div>
                 </div>
                 <?php endforeach; ?>
-                <div class="drop mb-2" data-position="<?php echo ++$key; ?>" data-reps="<?php echo $reps; ?>" droppable="true"></div>
+                <div class="drop mb-2" data-position="<?php echo ++$key; ?>" data-reps="<?php echo $reps; ?>"
+                    droppable="true"></div>
                 <div class="rounded thumbnail mb-2 mr-3 border">
                     <div class="overlay no-transition">
                         <form method="POST" action="form-handles/upload-handle.php" enctype="multipart/form-data">
