@@ -14,7 +14,13 @@
                 <a class="nav-link" href="animation.php">Vizualizace animace</a>
             </li>
         </ul>
-        <span class="btn btn-outline-secondary mr-2"><?php echo sprintf("Interval: %.1f s | Max %d reklam zobrazovaných 60x za hodinu", $INTERVAL, $SLOTS_COUNT / $INTERVAL); ?></span>
+        <form class="form-inline my-2 my-lg-0 mr-2" action="form-handles/interval-handle.php" method="post">
+            <input class="form-control mr-sm-2" name="interval" type="number" step=".1" min="1" max="60"
+                value="<?php echo $INTERVAL; ?>">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Uložit</button>
+        </form>
+        <span
+            class="btn btn-outline-secondary mr-2"><?php echo sprintf("Interval: %.1f s | Max %d reklam zobrazovaných 60x za hodinu", $INTERVAL, $SLOTS_COUNT / $INTERVAL); ?></span>
         <a href="generate.php" class="btn btn-primary mr-2 generate">Manuálně vygenerovat animaci</a>
     </div>
 </nav>

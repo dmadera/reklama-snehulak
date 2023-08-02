@@ -9,3 +9,11 @@ $SLOT_COUNT = $SLOTS_COUNT / $SLOT_LIMIT;
 $INTERVAL = 7.5;
 $WIDTH = 1120;
 $HEIGHT = 640;
+
+$FILE_INTERVAL = realpath(dirname(__FILE__))."/.config.interval"; 
+if(is_file($FILE_INTERVAL)) {
+    $i  = (float) file_get_contents($FILE_INTERVAL);
+    if ($i >= 1 && $i <= 60) {
+        $INTERVAL = $i;
+    }
+}
